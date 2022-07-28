@@ -3,6 +3,7 @@ const morgan = require("morgan");
 require("dotenv").config();
 const connectDB = require("./config/connectDB");
 const userRoute = require("./routes/userRoute");
+const TransactionRoute = require("./routes/transactionRoute")
 
 connectDB();
 const app = express();
@@ -11,11 +12,12 @@ const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
 app.use("/api/users", userRoute);
+app.use("/api/transactions", TransactionRoute)
 
 
 //home route
 app.get("/", (req, res) => {
-  res.send("WELCOME TO TRALAN AUTOMOBILE COMPANY LIMITED");
+  res.send("WELCOME TO TRALAN TRANSACTIONS DASHBOARD");
 });
 
 
