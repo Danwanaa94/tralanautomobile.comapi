@@ -26,6 +26,7 @@ const newUser = async (req, res) => {
       message: "Invalid data",
     });
   }
+  console.log(err,)
 };
 
 // user log in
