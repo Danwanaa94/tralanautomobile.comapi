@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
+const Schema = require("mongoose")
 
-
-const transactionSchema = new Schema(
+const transactionSchema = new mongoose.Schema(
     {
       date: {
         type: String,
         required: true,
       },
-      userIdentiyCard: {
+      userId: {
         type: Schema.Types.ObjectId,
         required: true,
       },
@@ -17,7 +17,7 @@ const transactionSchema = new Schema(
             type: String,
             required: true,
           },
-          Type: {
+          transactionType: {
             type: String,
             required: true,
             enumerate: ["Debit", "Credit", "Reversal"],

@@ -1,12 +1,12 @@
 const Transaction =require ("../models/transactionSchema" )
 const { Types } = require("mongoose");
 const {nanoid} = require("nanoid")
-const newDate = require("newDate");
+const getDate = require("getDate");
 
 //create a transaction
 const createTransaction = async (req, res) => {
-    const { body, userIdentityCard } = req;
-    const date = newDate();
+    const { body, userId } = req;
+    const date = getDate();
     const ref = nanoid(6);
   
     const transaction = await
@@ -25,7 +25,7 @@ const createTransaction = async (req, res) => {
     } else {
       transaction = Transaction.create({
         date,
-        userIdentityCard,
+        userId,
         actions: [newTransaction],
       });
     }
@@ -34,8 +34,8 @@ const createTransaction = async (req, res) => {
   };
  //get all transactions
  const getAllTransaction =async(req, res)=>{
-    const {userIdentityCard}=req;
-    userIdentityCard = Types.ObjectId(userIdentityCard);
+    const {userId}=req;
+    userId = Types.ObjectId(userId);
      const transactions = await Transaction.find({userIdentityCard});
      res.status(200).json(transactions)
  }
